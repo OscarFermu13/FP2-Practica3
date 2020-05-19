@@ -6,7 +6,7 @@
 
 /* Programa Principal */
 int main() {
-	int opcion, vector[100000], contador;
+	int opcion, vector[100000], contador, numero, dicotomica;
 	char enter;
 
 	/* Cargar el menu principal */
@@ -46,20 +46,44 @@ int main() {
 
 			case 4:
 				printf("\n\n---  Ordenacion por insercion ---\n");
-				//contador = ordInsercion(&vector, n);
+				contador = 0;
+				contador = ordInsercion(&vector, n);
+				ordInsercion(&vector, n);
 				printVector(vector, n);
 				printf("\nContador: %d\n\n", contador);
 				break;
 
 			case 5:
 				printf("\n\n---  Busqueda dicotomica ---\n");
-				break;
+				printf("Introduce el numero deseado (positivo):\n");
+				scanf("%d", &numero);
+				if (!ordenado(vector, n))
+				{
+					printf("El vector esta desordenado, utiliza la opcion 2, 3 o 4 para ordenarlo\n\n");
+					break;
+				}
+				else
+				{
+					int contdicotomica = 0;
+					int dicotomica = binarySearch(vector, 0, n - 1, numero, &contdicotomica);
+					if(dicotomica != -1)
+					{
+						printf("El numero %d esta en la posicion %d.\n", numero, dicotomica);
+						printf("Contador: %d\n\n", contdicotomica);
 
+					}
+					else
+					{
+						printf("El numero %d no se encuentra en el array.\n", numero);
+					}
+					break;
+				}
+			
 			case 9:
 				printf("\n");
 				printVector(vector, n);
 				break;
-
+			
 			case 0:
 				opcion = 0;
 				break;
