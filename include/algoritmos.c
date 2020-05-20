@@ -65,7 +65,7 @@ void printVector(int *vector, int n)
     printf("\n");    
 }
 
-int ordSeleccion(int *(vector[]), int n, char sn)
+int ordSeleccion(int *(vector[]), int n, char snS)
 {
     int contador = 0;
     int numPasosSeleccion = 1;
@@ -77,7 +77,7 @@ int ordSeleccion(int *(vector[]), int n, char sn)
             if (vector[j] < vector[min])
             {
                 min = j;
-                if (sn == 's')
+                if (snS == 's')
                 {
                     printf("--- PASO %d ---\n", numPasosSeleccion);
                     printVector(vector, n);
@@ -91,7 +91,7 @@ int ordSeleccion(int *(vector[]), int n, char sn)
             int aux = vector[i];
             vector[i] = vector[min];
             vector[min] = aux;
-            if (sn == 's')
+            if (snS == 's')
             {
                 printf("--- PASO %d ---\n", numPasosSeleccion);
                 printVector(vector, n);
@@ -103,7 +103,7 @@ int ordSeleccion(int *(vector[]), int n, char sn)
 }
 
 
-int ordBurbuja(int *(vector[]), int n, char sn)
+int ordBurbuja(int *(vector[]), int n, char snB)
 {
     int contador = 0;
     int numPasosBurbuja = 1;
@@ -117,7 +117,7 @@ int ordBurbuja(int *(vector[]), int n, char sn)
                 int aux = vector[j];
                 vector[j] = vector[j + 1];
                 vector[j + 1] = aux;
-                if (sn == 's')
+                if (snB == 's')
                 {
                     printf("--- PASO %d ---\n", numPasosBurbuja);
                     printVector(vector, n);
@@ -132,8 +132,7 @@ int ordBurbuja(int *(vector[]), int n, char sn)
 
 
 
-
-int ordInsercion(int *(vector[]), int n, char sn)
+int ordInsercion(int *(vector[]), int n, char snI)
 {
     int contador = 0;
     int numPasosInsercion = 1;
@@ -145,16 +144,15 @@ int ordInsercion(int *(vector[]), int n, char sn)
 
         while (j >= 0 && vector[j] > temp)
         {
+            if (snI == 's')
+            {
+                printf("--- PASO %d ---\n", numPasosInsercion);
+                printVector(vector, n);
+                numPasosInsercion++;
+            }
             vector[j + 1] = vector[j];
             j--;
             contador++;
-            if (sn == 's')
-                {
-                    printf("--- PASO %d ---\n", numPasosInsercion);
-                    printVector(vector, n);
-                    numPasosInsercion++;
-                }
-
         }
         
         vector[j + 1] = temp;
