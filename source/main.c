@@ -6,15 +6,20 @@
 
 /* Programa Principal */
 int main() {
-	int opcion, vector[100000], contador, numero, dicotomica;
-	char enter;
+	int opcion, vector[100000], numero, contadorSeleccion;
+	char enter, sino;
+	int n;
+
+	printf("\n\n --- ORDENACIO, CERCA I COST --- \n");
+	printf("Numero de elementos del vector? (Multiplo de 10)\n");
+	scanf("%d", &n);
 
 	/* Cargar el menu principal */
 	print_menu();
 	scanf("%d", &opcion);
 	scanf("%c", &enter);
 
-	int n = 10;
+	//int n = 1000;
 
 	crearVector(&vector, n);
 
@@ -30,28 +35,43 @@ int main() {
 
 			case 2:
 				printf("\n\n---  Ordenacion por seleccion ---\n");
-				contador = 0;
-				contador = ordSeleccion(&vector, n);
-				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
+				scanf("%s", &sino);
+				contadorSeleccion = 0;
+				contadorSeleccion = ordSeleccion(&vector, n, sino);
+				if(sino == 'n')
+				{
+					printVector(vector, n);
+				}
+				printf("\nContador: %d\n\n", contadorSeleccion);
 				break;
+
 
 			case 3:
 				printf("\n\n---  Ordenacion por burbuja ---\n");
-				contador = 0;
-				contador = ordBurbuja(&vector, n);
-				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
+				scanf("%s", &sino);
+				int contadorBurbuja = 0;
+				contadorBurbuja = ordBurbuja(&vector, n, sino);
+				if (sino == 'n')
+				{
+					printVector(vector, n);
+				}
+				printf("\nContador: %d\n\n", contadorBurbuja);
 				break;
-
 			case 4:
 				printf("\n\n---  Ordenacion por insercion ---\n");
-				contador = 0;
-				contador = ordInsercion(&vector, n);
-				ordInsercion(&vector, n);
-				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
+				scanf("%s", &sino);
+				int contadorInsercion = 0;
+				contadorInsercion = ordInsercion(&vector, n, sino);
+				if (sino == 'n')
+				{
+					printVector(vector, n);
+				}
+				printf("\nContador: %d\n\n", contadorInsercion);
 				break;
+
 
 			case 5:
 				printf("\n\n---  Busqueda dicotomica ---\n");
@@ -64,22 +84,24 @@ int main() {
 				}
 				else
 				{
+					
 					int contdicotomica = 0;
-					int dicotomica = binarySearch(vector, 0, n - 1, numero, &contdicotomica);
+					printf("Desea ver el procedimiento paso a paso? (s/n)\n");
+					scanf("%s", &sino);
+					int dicotomica = busDicotomica(vector, 0, n - 1, numero, &contdicotomica, sino);
+
 					if(dicotomica != -1)
 					{
 						printf("El numero %d esta en la posicion %d.\n", numero, dicotomica);
 						printf("Contador: %d\n\n", contdicotomica);
-
 					}
 					else
-					{
 						printf("El numero %d no se encuentra en el array.\n", numero);
-					}
 					break;
 				}
-			
-			case 9:
+
+
+			case 7: 
 				printf("\n");
 				printVector(vector, n);
 				break;
