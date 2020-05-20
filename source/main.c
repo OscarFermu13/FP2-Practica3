@@ -6,7 +6,7 @@
 
 /* Programa Principal */
 int main() {
-	int opcion, vector[100000], contador;
+	int opcion, vector[100000], numero;
 	char enter;
 
 	/* Cargar el menu principal */
@@ -14,7 +14,7 @@ int main() {
 	scanf("%d", &opcion);
 	scanf("%c", &enter);
 
-	int n = 10;
+	int n = 1000;
 
 	crearVector(&vector, n);
 
@@ -30,36 +30,76 @@ int main() {
 
 			case 2:
 				printf("\n\n---  Ordenacion por seleccion ---\n");
-				contador = 0;
-				contador = ordSeleccion(&vector, n);
+				int contadorSeleccion = 0;
+				contadorSeleccion = ordSeleccion(&vector, n);
 				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("\nContador: %d\n\n", contadorSeleccion);
 				break;
 
 			case 3:
 				printf("\n\n---  Ordenacion por burbuja ---\n");
-				contador = 0;
-				contador = ordBurbuja(&vector, n);
+				int contadorBurbuja = 0;
+				contadorBurbuja = ordBurbuja(&vector, n);
 				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("\nContador: %d\n\n", contadorBurbuja);
 				break;
 
 			case 4:
 				printf("\n\n---  Ordenacion por insercion ---\n");
-				//contador = ordInsercion(&vector, n);
+				int contadorInsercion = 0;
+				contadorInsercion = ordInsercion(&vector, n);
 				printVector(vector, n);
-				printf("\nContador: %d\n\n", contador);
+				printf("\nContador: %d\n\n", contadorInsercion);
 				break;
 
 			case 5:
 				printf("\n\n---  Busqueda dicotomica ---\n");
-				break;
+				printf("Introduce el numero deseado (positivo):\n");
+				scanf("%d", &numero);
+				if (!ordenado(vector, n))
+				{
+					printf("El vector esta desordenado, utiliza la opcion 2, 3 o 4 para ordenarlo\n\n");
+					break;
+				}
+				else
+				{
+					int contdicotomica = 0;
+					int dicotomica = busDicotomica(vector, 0, n - 1, numero, &contdicotomica);
 
-			case 9:
-				printf("\n");
+					if(dicotomica != -1)
+					{
+						printf("El numero %d esta en la posicion %d.\n", numero, dicotomica);
+						printf("Contador: %d\n\n", contdicotomica);
+					}
+					else
+						printf("El numero %d no se encuentra en el array.\n", numero);
+					break;
+				}
+
+			case 6:
+				for (int i = 0; i < n; i++)
+				{
+					crearVectorOrdenado(&vector, n);
+					numero = -(i+2);
+					int contador = 0;
+					int dicotomica = busDicotomica(vector, 0, n - 1, numero, &contador);
+					if (dicotomica != -1)
+					{
+						printf("El numero %d esta en la posicion %d.\n", numero, dicotomica);
+						printf("Contador: %d\n\n", contador);
+					}
+					else
+						printf("El numero %d no se encuentra en el array.\n", numero);
+					printf("Contador: %d\n\n", contador);
+					break;
+				}
+				
+
+
+			case 9 : printf("\n");
 				printVector(vector, n);
 				break;
-
+			
 			case 0:
 				opcion = 0;
 				break;
