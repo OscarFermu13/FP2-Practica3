@@ -8,13 +8,18 @@
 int main() {
 	int opcion, vector[100000], numero;
 	char enter;
+	int n;
+
+	printf("\n\n --- ORDENACIO, CERCA I COST --- \n");
+	printf("Numero de elementos del vector? (Multiplo de 10)\n");
+	scanf("%d", &n);
 
 	/* Cargar el menu principal */
 	print_menu();
 	scanf("%d", &opcion);
 	scanf("%c", &enter);
 
-	int n = 1000;
+	//int n = 1000;
 
 	crearVector(&vector, n);
 
@@ -76,27 +81,8 @@ int main() {
 					break;
 				}
 
-			case 6:
-				for (int i = 0; i < n; i++)
-				{
-					crearVectorOrdenado(&vector, n);
-					numero = -(i+2);
-					int contador = 0;
-					int dicotomica = busDicotomica(vector, 0, n - 1, numero, &contador);
-					if (dicotomica != -1)
-					{
-						printf("El numero %d esta en la posicion %d.\n", numero, dicotomica);
-						printf("Contador: %d\n\n", contador);
-					}
-					else
-						printf("El numero %d no se encuentra en el array.\n", numero);
-					printf("Contador: %d\n\n", contador);
-					break;
-				}
-				
-
-
-			case 9 : printf("\n");
+			case 7: 
+				printf("\n");
 				printVector(vector, n);
 				break;
 			

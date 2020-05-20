@@ -16,6 +16,7 @@ int ordInsercion(int *(vector[]), int n);
 int busDicotomica(int arr[], int l, int r, int x, int *contador); 
 
 void printVector(int *vector, int n);
+void printVectorExtra(int *vector, int n);
 bool ordenado (int array [], int n);
 
 #endif // ALGORITMOS_H

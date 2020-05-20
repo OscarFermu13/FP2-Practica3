@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
+#include <limits.h>
 
 #include "algoritmos.h"
 
@@ -16,6 +17,7 @@ void print_menu(void)
     printf("3 - Ordenacion por burbuja\n");
     printf("4 - Ordenacion por insercion\n");
     printf("5 - Busqueda dicotomica\n");
+    printf("7 - Imprimir vector\n");
     printf("0 - Salir\n");
 }
 
@@ -24,9 +26,7 @@ void crearVector(int *(*vector[]), int n)
     time_t t;
     srand((unsigned) time(&t));
     for (int i = 0; i < n; i++)
-    {
         vector[i] = rand();
-    }
 }
 
 void crearVectorOrdenado(int *(*vector[]), int n)
@@ -39,12 +39,25 @@ void crearVectorOrdenado(int *(*vector[]), int n)
 
 void printVector(int *vector, int n)
 {
+    int max = 0, min = INT_MAX;
     if (n <= 100)
     {
         for (int i = 0; i < n; i++)
         {
-            printf("%d\n", vector[i]);
+            printf("vector[%d] = %d\n", i, vector[i]);
         }
+
+        for (int j = 0; j < n; j++)
+        {
+            if (vector[j] >= max)
+                max = vector[j];
+
+            if (vector[j] <= min)
+                min = vector[j];
+        }
+
+        printf("Max: %d - Min: %d \n", max, min);
+        
     }
     else
         printf("El vector es demasiado grande!\n\n");
@@ -154,4 +167,4 @@ int busDicotomica(int arr[], int l, int r, int x, int *contador)
     }
   } 
     return -1;  
-} 
+}
