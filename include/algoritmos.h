@@ -10,10 +10,10 @@ void print_menu(void);
 void crearVector(int *(*vector[]), int n);
 void crearVectorOrdenado(int *(*vector[]), int n);
 
-int ordSeleccion(int *(vector[]), int n);
-int ordBurbuja(int *(vector[]), int n);
-int ordInsercion(int *(vector[]), int n);
-int busDicotomica(int arr[], int l, int r, int x, int *contador); 
+int ordSeleccion(int *(vector[]), int n, char sn);
+int ordBurbuja(int *(vector[]), int n, char sn);
+int ordInsercion(int *(vector[]), int n, char sn);
+int busDicotomica(int arr[], int l, int r, int x, int *contador, char sn); 
 
 void printVector(int *vector, int n);
 void printVectorExtra(int *vector, int n);
