@@ -19,7 +19,8 @@ int main() {
 	scanf("%d", &opcion);
 	scanf("%c", &enter);
 
-	crearVectorOrdenado(&vector, n);
+
+	crearVector(vector, n);
 
 	while (opcion != 0)
 	{
@@ -27,7 +28,7 @@ int main() {
 		{
 			case 1:
 				printf("\n\n---  Generar vector aleatorio ---\n");
-				crearVectorOrdenado(&vector, n);
+				crearVector(vector, n);
 				printf("Vector aleatorio de %d posiciones generado!\n\n", n);
 				break;
 
@@ -36,11 +37,9 @@ int main() {
 				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
 				scanf("%s", &sino);
 				contadorSeleccion = 0;
-				contadorSeleccion = ordSeleccion(&vector, n, sino);
-				if(sino == 'n')
-				{
-					printVector(vector, n);
-				}
+				contadorSeleccion = ordSeleccion(vector, n, sino);
+				printf("--- VECTOR ORDENADO ---\n");
+				printVector(vector, n);
 				printf("\nContador: %d\n\n", contadorSeleccion);
 				break;
 
@@ -50,11 +49,9 @@ int main() {
 				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
 				scanf("%s", &sino);
 				int contadorBurbuja = 0;
-				contadorBurbuja = ordBurbuja(&vector, n, sino);
-				if (sino == 'n')
-				{
-					printVector(vector, n);
-				}
+				contadorBurbuja = ordBurbuja(vector, n, sino);
+				printf("--- VECTOR ORDENADO ---\n");
+				printVector(vector, n);
 				printf("\nContador: %d\n\n", contadorBurbuja);
 				break;
 			case 4:
@@ -62,11 +59,9 @@ int main() {
 				printf("Desea ver el procedimiento paso a paso? (s/n)\n");
 				scanf("%s", &sino);
 				int contadorInsercion = 0;
-				contadorInsercion = ordInsercion(&vector, n, sino);
-				if (sino == 'n')
-				{
-					printVector(vector, n);
-				}
+				contadorInsercion = ordInsercion(vector, n, sino);
+				printf("--- VECTOR ORDENADO ---\n");
+				printVector(vector, n);
 				printf("\nContador: %d\n\n", contadorInsercion);
 				break;
 
