@@ -21,6 +21,9 @@ void print_menu(void)
     printf("0 - Salir\n");
 }
 
+/*FUNCION crearVector * /
+/* Crea un vector aleatorio de n elementos */
+/* Recibe el vector donde almacenar la información y el numero de elementos del vector */
 void crearVector(int *(*vector[]), int n)
 {
     time_t t;
@@ -29,6 +32,9 @@ void crearVector(int *(*vector[]), int n)
         vector[i] = rand();
 }
 
+/*FUNCION crearVectorOrdenado * /
+/* Crea un vector previamente ordenado de n elementos */
+/* Recibe el vector donde almacenar la información y el numero de elementos del vector */
 void crearVectorOrdenado(int *(*vector[]), int n)
 {
     for (int i = 0; i < n; i++)
@@ -37,6 +43,9 @@ void crearVectorOrdenado(int *(*vector[]), int n)
     }
 }
 
+/*FUNCION printVector * /
+/* Imprime el vector pasado como parametro siempre y cuando tenga menos de 100 elementos */
+/* Recibe el vector donde almacenar la información y el numero de elementos del vector */
 void printVector(int *vector, int n)
 {
     int max = 0, min = INT_MAX;
@@ -65,6 +74,10 @@ void printVector(int *vector, int n)
     printf("\n");    
 }
 
+/*FUNCION ordSeleccion * /
+/* Ordena el vector con un algoritmo de ordenacion por selección */
+/* Recibe el vector donde almacenar la información, el numero de elementos del vector y un caracter de control que imprime paso a paso la ordenacion o no */
+/* Devuelve el numero de comparaciones necesarias para ordenar el vector */
 int ordSeleccion(int *(vector[]), int n, char snS)
 {
     int contador = 0;
@@ -112,7 +125,10 @@ int ordSeleccion(int *(vector[]), int n, char snS)
     return contador;
 }
 
-
+/*FUNCION ordBurbuja * /
+/* Ordena el vector con un algoritmo de ordenacion por burbuja */
+/* Recibe el vector donde almacenar la información, el numero de elementos del vector y un caracter de control que imprime paso a paso la ordenacion o no */
+/* Devuelve el numero de comparaciones necesarias para ordenar el vector */
 int ordBurbuja(int *(vector[]), int n, char snB)
 {
     int contador = 0;
@@ -148,8 +164,10 @@ int ordBurbuja(int *(vector[]), int n, char snB)
     return contador;
 }
 
-
-
+/*FUNCION ordInsercion * /
+/* Ordena el vector con un algoritmo de ordenacion por inserción */
+/* Recibe el vector donde almacenar la información, el numero de elementos del vector y un caracter de control que imprime paso a paso la ordenacion o no */
+/* Devuelve el numero de comparaciones necesarias para ordenar el vector */
 int ordInsercion(int *(vector[]), int n, char snI)
 {
     int contador = 0;
@@ -186,6 +204,10 @@ int ordInsercion(int *(vector[]), int n, char snI)
     return contador;
 }
 
+/*FUNCION ordenado * /
+/* Comprueba si un vector está ordenado o no */
+/* Recibe el vector donde está la información y el numero de elementos del vector */
+/* Devuelve un bool (True = ordenado, False = desordenado) */
 bool ordenado (int array [], int n)
 {
     int i;
@@ -199,6 +221,11 @@ bool ordenado (int array [], int n)
     return true;
 }
 
+/*FUNCION busDicotomica * /
+/* Busca un numero dentro de un vector con un algoritmo de busqueda dicotomica */
+/* Recibe el vector donde se almacena la información, el primer y el último numero del vector, el numero a buscar, un contador de numero de pasos realizados
+/* y un caracter de control que imprime paso a paso la ordenacion o no */
+/* Devuelve un int que controla si el numero se ha encontrado o no */
 int busDicotomica(int arr[], int l, int r, int x, int *contador, char sn)
 { 
     int n = r + 1;
